@@ -192,19 +192,14 @@ export default function App() {
   }, []);
 
   /* ============================================================================
-     VALIDATION (FULLY FIXED)
+     VALIDATION
   ============================================================================ */
   const validateStep = () => {
     if (!currentQuestion) return true;
 
     if (currentQuestion.required) {
       const val = (formData as any)[currentQuestion.id];
-
-      if (
-        val === "" ||
-        val === null ||
-        (typeof val === "number" && isNaN(val))
-      ) {
+      if (val === "" || val === null || (typeof val === "number" && isNaN(val))) {
         setValidationError("This field is required.");
         return false;
       }
@@ -224,7 +219,7 @@ export default function App() {
   };
 
   /* ============================================================================
-     SUBMIT — CALL AI BACKEND
+     SUBMIT — CALL BACKEND
   ============================================================================ */
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -308,22 +303,42 @@ export default function App() {
      UI STRUCTURE
   ============================================================================ */
   return (
-    <div className="min-h-screen text-[var(--text-color)] flex flex-col p-4 bg-[var(--bg-color)]">
+    <div className="min-h-screen text-[var(--text-color)] flex flex-col p-4 pt-16 md:pt-20 bg-[var(--bg-color)]">
       <div className="w-full max-w-2xl mx-auto">
-        
+
         {/* HERO */}
-        <header className="text-center mb-8 animate-fade-in-up">
+        <header className="text-center mb-10 animate-fade-in-up">
+          
+          {/* Logo */}
           <div className="mx-auto mb-6 flex items-center justify-center">
-            <img src={branding.logoUrl} alt="" className="max-h-20 w-auto object-contain" />
+            <img 
+              src={branding.logoUrl} 
+              alt="Logo" 
+              className="max-h-20 w-auto object-contain" 
+            />
           </div>
 
-          <h1 className="text-4xl font-bold mb-2">{branding.appName}</h1>
+          {/* MAIN TITLE — GOOGLE STYLE */}
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight drop-shadow-lg">
+            {branding.appName}
+          </h1>
 
-          <p className="text-sm text-[var(--text-color-light)]">
-            {language === "es"
-              ? "Estimador impulsado por Google Gemini"
-              : "Powered by Google Gemini AI"}
-          </p>
+          {/* POWERED BY BADGE */}
+          <div className="flex items-center justify-center">
+            <div className="px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex items-center gap-2 text-[var(--text-color-light)] text-base">
+
+              {/* Lightning Icon */}
+              <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 21.5L17.5 13L13 10L15 2.5L6.5 11L11 14L9 21.5Z" />
+              </svg>
+
+              Powered by
+              <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                Google Gemini AI
+              </span>
+            </div>
+          </div>
+
         </header>
 
         {/* MAIN CARD */}
@@ -363,6 +378,7 @@ export default function App() {
         <footer className="text-center mt-8 text-sm text-[var(--text-color-lighter)]">
           © {new Date().getFullYear()} {branding.appName}. All rights reserved.
         </footer>
+
       </div>
     </div>
   );
