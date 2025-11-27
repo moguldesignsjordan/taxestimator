@@ -1,0 +1,5 @@
+{
+  "name": "Tax Moguls - Refund Estimator",
+  "description": "An AI-powered estimator to get a rough idea of your U.S. federal tax refund or amount due. Just answer a few simple questions to get started.",
+  "requestFramePermissions": []
+}
