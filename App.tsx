@@ -348,7 +348,7 @@ export default function App() {
             />
 
             <a
-              href="https://thetaxmoguls.com/file-now"
+              href="https://www.thetaxmoguls.com/file-now"
               target="_blank"
               className="btn-strong block w-full text-center mt-6 py-3 bg-[var(--primary-color)] text-white font-bold rounded-lg hover:bg-[var(--primary-color-hover)] transition"
             >
